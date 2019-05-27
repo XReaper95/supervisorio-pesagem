@@ -124,6 +124,7 @@ Partial Class Form1
         Me.tbTara.ForeColor = System.Drawing.SystemColors.WindowText
         Me.tbTara.Location = New System.Drawing.Point(31, 72)
         Me.tbTara.Name = "tbTara"
+        Me.tbTara.ReadOnly = True
         Me.tbTara.Size = New System.Drawing.Size(123, 20)
         Me.tbTara.TabIndex = 7
         Me.tbTara.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
