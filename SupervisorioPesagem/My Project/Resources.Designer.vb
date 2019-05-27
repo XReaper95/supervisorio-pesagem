@@ -83,9 +83,9 @@ Namespace My.Resources
         '''<summary>
         '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property PilogoAM() As System.Drawing.Bitmap
+        Friend ReadOnly Property LedAM() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("PilogoAM", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("LedAM", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -93,9 +93,9 @@ Namespace My.Resources
         '''<summary>
         '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property PilotoVD() As System.Drawing.Bitmap
+        Friend ReadOnly Property LedVD() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("PilotoVD", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("LedVD", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -103,9 +103,9 @@ Namespace My.Resources
         '''<summary>
         '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property PilotoVM() As System.Drawing.Bitmap
+        Friend ReadOnly Property LedVM() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("PilotoVM", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("LedVM", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

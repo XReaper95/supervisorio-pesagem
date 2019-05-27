@@ -38,17 +38,18 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.gbControleis = New System.Windows.Forms.GroupBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.tbPesoDesejado = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.pbLedLiberado = New System.Windows.Forms.PictureBox()
         Me.SerialCOM4 = New System.IO.Ports.SerialPort(Me.components)
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.tmTara = New System.Windows.Forms.Timer(Me.components)
         CType(Me.pbTruck, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbSilo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbLedTara, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,7 +80,7 @@ Partial Class Form1
         '
         'pbLedTara
         '
-        Me.pbLedTara.Image = Global.SupervisorioPesagem.My.Resources.Resources.PilotoVM
+        Me.pbLedTara.Image = Global.SupervisorioPesagem.My.Resources.Resources.LedVM
         Me.pbLedTara.Location = New System.Drawing.Point(13, 32)
         Me.pbLedTara.Name = "pbLedTara"
         Me.pbLedTara.Size = New System.Drawing.Size(57, 52)
@@ -99,7 +100,7 @@ Partial Class Form1
         '
         'pbLedCarr
         '
-        Me.pbLedCarr.Image = Global.SupervisorioPesagem.My.Resources.Resources.PilotoVM
+        Me.pbLedCarr.Image = Global.SupervisorioPesagem.My.Resources.Resources.LedVM
         Me.pbLedCarr.Location = New System.Drawing.Point(126, 32)
         Me.pbLedCarr.Name = "pbLedCarr"
         Me.pbLedCarr.Size = New System.Drawing.Size(57, 52)
@@ -123,7 +124,6 @@ Partial Class Form1
         Me.tbTara.ForeColor = System.Drawing.SystemColors.WindowText
         Me.tbTara.Location = New System.Drawing.Point(31, 72)
         Me.tbTara.Name = "tbTara"
-        Me.tbTara.ReadOnly = True
         Me.tbTara.Size = New System.Drawing.Size(123, 20)
         Me.tbTara.TabIndex = 7
         Me.tbTara.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -222,6 +222,46 @@ Partial Class Form1
         Me.gbControleis.TabStop = False
         Me.gbControleis.Text = "Painel de controle"
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(325, 170)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(25, 17)
+        Me.Label12.TabIndex = 21
+        Me.Label12.Text = "Kg"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(325, 142)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(25, 17)
+        Me.Label11.TabIndex = 20
+        Me.Label11.Text = "Kg"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(383, 75)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(25, 17)
+        Me.Label9.TabIndex = 18
+        Me.Label9.Text = "Kg"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(160, 75)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(25, 17)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "Kg"
+        '
         'btnReset
         '
         Me.btnReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -262,7 +302,7 @@ Partial Class Form1
         '
         'pbLedLiberado
         '
-        Me.pbLedLiberado.Image = Global.SupervisorioPesagem.My.Resources.Resources.PilotoVM
+        Me.pbLedLiberado.Image = Global.SupervisorioPesagem.My.Resources.Resources.LedVM
         Me.pbLedLiberado.Location = New System.Drawing.Point(240, 32)
         Me.pbLedLiberado.Name = "pbLedLiberado"
         Me.pbLedLiberado.Size = New System.Drawing.Size(57, 52)
@@ -274,46 +314,6 @@ Partial Class Form1
         '
         Me.SerialCOM4.PortName = "COM4"
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(160, 75)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(25, 17)
-        Me.Label8.TabIndex = 17
-        Me.Label8.Text = "Kg"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(383, 75)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(25, 17)
-        Me.Label9.TabIndex = 18
-        Me.Label9.Text = "Kg"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(325, 142)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(25, 17)
-        Me.Label11.TabIndex = 20
-        Me.Label11.Text = "Kg"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(325, 170)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(25, 17)
-        Me.Label12.TabIndex = 21
-        Me.Label12.Text = "Kg"
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -323,6 +323,11 @@ Partial Class Form1
         Me.Label10.Size = New System.Drawing.Size(360, 39)
         Me.Label10.TabIndex = 18
         Me.Label10.Text = "Balança Eletrônica"
+        '
+        'tmTara
+        '
+        Me.tmTara.Enabled = True
+        Me.tmTara.Interval = 650
         '
         'Form1
         '
@@ -379,4 +384,5 @@ Partial Class Form1
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label10 As Label
+    Friend WithEvents tmTara As Timer
 End Class
