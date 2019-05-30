@@ -344,10 +344,10 @@ Partial Class Form1
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Stencil", 24.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(357, 22)
+        Me.Label10.Font = New System.Drawing.Font("Stencil", 42.0!, System.Drawing.FontStyle.Italic)
+        Me.Label10.Location = New System.Drawing.Point(344, 9)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(360, 39)
+        Me.Label10.Size = New System.Drawing.Size(618, 67)
         Me.Label10.TabIndex = 18
         Me.Label10.Text = "Balança Eletrônica"
         '
@@ -540,7 +540,9 @@ Partial Class Form1
         Me.Controls.Add(Me.pbLedTara)
         Me.Controls.Add(Me.pbSilo)
         Me.Controls.Add(Me.pbTruck)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.pbTruck, System.ComponentModel.ISupportInitialize).EndInit()
