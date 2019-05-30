@@ -50,12 +50,29 @@ Partial Class Form1
         Me.SerialCOM4 = New System.IO.Ports.SerialPort(Me.components)
         Me.Label10 = New System.Windows.Forms.Label()
         Me.tmTara = New System.Windows.Forms.Timer(Me.components)
+        Me.MainTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.TramaBox = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.gbEstatisticas = New System.Windows.Forms.GroupBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         CType(Me.pbTruck, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbSilo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbLedTara, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbLedCarr, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbControleis.SuspendLayout()
         CType(Me.pbLedLiberado, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbEstatisticas.SuspendLayout()
         Me.SuspendLayout()
         '
         'pbTruck
@@ -330,11 +347,172 @@ Partial Class Form1
         Me.tmTara.Enabled = True
         Me.tmTara.Interval = 650
         '
+        'MainTimer
+        '
+        Me.MainTimer.Interval = 300
+        '
+        'TramaBox
+        '
+        Me.TramaBox.BackColor = System.Drawing.SystemColors.Window
+        Me.TramaBox.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.TramaBox.Location = New System.Drawing.Point(410, 374)
+        Me.TramaBox.Name = "TramaBox"
+        Me.TramaBox.ReadOnly = True
+        Me.TramaBox.Size = New System.Drawing.Size(287, 20)
+        Me.TramaBox.TabIndex = 19
+        Me.TramaBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(353, 374)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(49, 17)
+        Me.Label13.TabIndex = 20
+        Me.Label13.Text = "Trama"
+        '
+        'gbEstatisticas
+        '
+        Me.gbEstatisticas.Controls.Add(Me.Label21)
+        Me.gbEstatisticas.Controls.Add(Me.TextBox4)
+        Me.gbEstatisticas.Controls.Add(Me.Label20)
+        Me.gbEstatisticas.Controls.Add(Me.TextBox3)
+        Me.gbEstatisticas.Controls.Add(Me.Label19)
+        Me.gbEstatisticas.Controls.Add(Me.TextBox2)
+        Me.gbEstatisticas.Controls.Add(Me.Label18)
+        Me.gbEstatisticas.Controls.Add(Me.TextBox1)
+        Me.gbEstatisticas.Controls.Add(Me.Label17)
+        Me.gbEstatisticas.Controls.Add(Me.Label16)
+        Me.gbEstatisticas.Controls.Add(Me.Label15)
+        Me.gbEstatisticas.Controls.Add(Me.Label14)
+        Me.gbEstatisticas.Location = New System.Drawing.Point(775, 82)
+        Me.gbEstatisticas.Name = "gbEstatisticas"
+        Me.gbEstatisticas.Size = New System.Drawing.Size(196, 282)
+        Me.gbEstatisticas.TabIndex = 22
+        Me.gbEstatisticas.TabStop = False
+        Me.gbEstatisticas.Text = "Estatísticas"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(150, 240)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(25, 17)
+        Me.Label21.TabIndex = 26
+        Me.Label21.Text = "Kg"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(43, 240)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(101, 20)
+        Me.TextBox4.TabIndex = 25
+        Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(150, 173)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(25, 17)
+        Me.Label20.TabIndex = 24
+        Me.Label20.Text = "Kg"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(43, 173)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(101, 20)
+        Me.TextBox3.TabIndex = 23
+        Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(150, 115)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(25, 17)
+        Me.Label19.TabIndex = 22
+        Me.Label19.Text = "Kg"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(43, 112)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(101, 20)
+        Me.TextBox2.TabIndex = 21
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(150, 50)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(26, 17)
+        Me.Label18.TabIndex = 20
+        Me.Label18.Text = "Un"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(43, 49)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(101, 20)
+        Me.TextBox1.TabIndex = 19
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(16, 221)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(171, 17)
+        Me.Label17.TabIndex = 16
+        Me.Label17.Text = "Peso médio carregado"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(16, 153)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(150, 17)
+        Me.Label16.TabIndex = 15
+        Me.Label16.Text = "Peso total de grãos"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(26, 86)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(145, 17)
+        Me.Label15.TabIndex = 14
+        Me.Label15.Text = "Peso meio da Tara"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(21, 29)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(164, 17)
+        Me.Label14.TabIndex = 13
+        Me.Label14.Text = "Quant. de Caminhões"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(761, 406)
+        Me.ClientSize = New System.Drawing.Size(1001, 406)
+        Me.Controls.Add(Me.gbEstatisticas)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.TramaBox)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.pbLedLiberado)
@@ -354,6 +532,8 @@ Partial Class Form1
         Me.gbControleis.ResumeLayout(False)
         Me.gbControleis.PerformLayout()
         CType(Me.pbLedLiberado, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbEstatisticas.ResumeLayout(False)
+        Me.gbEstatisticas.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -386,4 +566,20 @@ Partial Class Form1
     Friend WithEvents Label8 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents tmTara As Timer
+    Friend WithEvents MainTimer As Timer
+    Friend WithEvents TramaBox As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents gbEstatisticas As GroupBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label21 As Label
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class
