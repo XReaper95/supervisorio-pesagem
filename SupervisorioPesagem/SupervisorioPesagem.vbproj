@@ -46,6 +46,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Iconleak-Or-Justice-balance.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -135,6 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SinoOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bartkowalski-1960-Matchbox-Cars-Dumper-Truck.ico" />
+    <Content Include="Iconleak-Or-Justice-balance.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

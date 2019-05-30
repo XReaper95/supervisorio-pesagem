@@ -1,12 +1,20 @@
 ﻿Public Class Form1
     Dim trama As String = ""
 
-    Dim Weight As Double = 0.0
-    Dim TotalWeight As Double = 0.0
+    Dim MAX_WEIGHT As Decimal = 25000.0
 
-    Dim TruckOn As Boolean = False
-    Dim CarregandoLedState As Boolean = False
-    Dim ReadyLedState As Boolean = False
+    Dim tara As Double = 0.0
+    Dim targetWeight As Double = 0.0
+    Dim readWeight As Double = 0.0
+    Dim cargoWeight As Double = 0.0
+
+    Dim truckAmount As Integer = 0
+    Dim totalTara As Double = 0.0
+    Dim totalWeight As Double = 0.0
+
+    Dim truckOn As Boolean = False
+    Dim loadReadyState As Boolean = False
+    Dim loadingCargo As Boolean = False
     Dim taraLedState As Char = "R"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,16 +29,34 @@
         End Try
     End Sub
 
-    Private Sub GetPICData()
+    Private Sub MainTimer_Tick(sender As Object, e As EventArgs) Handles MainTimer.Tick
         If SerialCOM4.IsOpen Then
+            SerialCOM4.Write("A")
             trama = SerialCOM4.ReadExisting()
-            TruckOn = trama.Split(",")(0)
-            Weight = trama.Split(",")(1)
+            If trama.Length = 6 Then
+                If trama.Split(",")(0) = 1 Then truckOn = True Else truckOn = False
+
+                If loadingCargo = False Then
+                    If truckOn Then
+                        pbTruck.Image = My.Resources.CaminhaoON
+                    Else
+                        pbTruck.Image = My.Resources.CaminhaoOff
+                    End If
+                End If
+
+                readWeight = trama.Split(",")(1) * 24.43792766
+
+                    TramaBox.Text = trama
+                End If
+            Else
+            TramaBox.Text = "Erro na trama"
         End If
+
+        If loadingCargo Then StartLoading()
     End Sub
 
     Private Sub TmTara_Tick(sender As Object, e As EventArgs) Handles tmTara.Tick
-        If tbTara.Text = "" Then
+        If tara = 0.0 Then
             If taraLedState = "R" Then
                 pbLedTara.Image = My.Resources.LedAM
                 taraLedState = "Y"
@@ -45,44 +71,116 @@
     End Sub
 
     Private Sub BTnTara_Click(sender As Object, e As EventArgs) Handles btnTara.Click
-        If TruckOn And tbTara.Text = "" Then
-            tbTara.Text = Weight.ToString()
+        If truckOn And tara = 0.0 Then
+            tara = readWeight
+            tbTara.Text = tara.ToString()
+            nudPesoDesejado.Maximum = Decimal.Parse(MAX_WEIGHT - tara)
+            nudPesoDesejado.Enabled = True
+        Else
+            TramaBox.Text = "Coloque o caminhão na balança"
         End If
     End Sub
 
+    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        ResetState()
+
+        truckAmount = 0
+        totalTara = 0.0
+        totalWeight = 0.0
+
+        tbTruckAmount.Text = "0"
+        tbTaraMean.Text = "0.0"
+        tbTotalWeight.Text = "0.0"
+        TbMeanWeight.Text = "0.0"
+    End Sub
+
     Private Sub BTnCarr_Click(sender As Object, e As EventArgs) Handles btnCarr.Click
-        If TruckOn And tbTara.Text <> "" Then
-            If tbPesoDesejado.Text <> "" Then
+        If truckOn And tara > 0.0 Then
+            targetWeight = Double.Parse(nudPesoDesejado.Value)
+            If targetWeight > 0.0 Then
                 DisableControls()
-                pbLedCarr.Image = My.Resources.LedVD
-                While TotalWeight < Double.Parse(tbPesoDesejado.Text)
-                    GetPICData()
-                    TotalWeight = Weight - Double.Parse(tbTara.Text)
-                    If TotalWeight < 0 Then TotalWeight = 0
-                    tbPesoReal.Text = TotalWeight.ToString
-                End While
-                pbLedCarr.Image = My.Resources.LedVM
-                pbLedLiberado.Image = My.Resources.LedVD
-                EnableControls()
+                loadingCargo = True
+            Else
+                TramaBox.Text = "Insira um peso objetivo"
             End If
+        Else
+            TramaBox.Text = "Tarar caminhão"
         End If
+    End Sub
+
+    Private Sub StartLoading()
+        pbLedCarr.Image = My.Resources.LedVD
+        pbSilo.Image = My.Resources.SinoOn
+        If cargoWeight.CompareTo(targetWeight - 0.1) < 0 And loadingCargo Then
+            DisableControls()
+            cargoWeight = readWeight - tara
+            tbPesoReal.Text = readWeight.ToString()
+            If cargoWeight < 0 Then cargoWeight = 0
+            tbPesoCarr.Text = cargoWeight.ToString()
+        Else
+            pbSilo.Image = My.Resources.SiloOff
+            pbLedCarr.Image = My.Resources.LedVM
+            pbLedLiberado.Image = My.Resources.LedVD
+            loadReadyState = True
+        End If
+
+        If loadReadyState = True And truckOn = False Then
+            loadingCargo = False
+            EnableControls()
+            CalculateStatistics()
+            ResetState()
+        End If
+    End Sub
+
+    Private Sub CalculateStatistics()
+        truckAmount = truckAmount + 1
+        totalTara = totalTara + tara
+        totalWeight = totalWeight + cargoWeight
+
+        Dim taraMean As Double = totalTara / truckAmount
+        Dim weightMean As Double = totalWeight / truckAmount
+
+        tbTruckAmount.Text = truckAmount.ToString()
+        tbTaraMean.Text = FormatNumber(taraMean.ToString(), 2)
+        tbTotalWeight.Text = FormatNumber(totalWeight.ToString(), 2)
+        TbMeanWeight.Text = FormatNumber(weightMean.ToString(), 2)
     End Sub
 
     Private Sub DisableControls()
         btnCarr.Enabled = False
         btnTara.Enabled = False
-        btnReset.Enabled = False
+        nudPesoDesejado.Enabled = False
     End Sub
 
     Private Sub EnableControls()
         btnCarr.Enabled = True
         btnTara.Enabled = True
-        btnReset.Enabled = True
+        nudPesoDesejado.Enabled = True
     End Sub
 
     Private Sub ResetState()
+        tara = 0.0
+        targetWeight = 0.0
+        readWeight = 0.0
+        cargoWeight = 0.0
 
+        EnableControls()
+
+        truckOn = False
+        loadingCargo = False
+        loadReadyState = False
+        taraLedState = "R"
+
+        TramaBox.Text = ""
+
+        tbTara.Text = "0.0"
+        nudPesoDesejado.Value = 0
+        tbPesoReal.Text = "0.0"
+        tbPesoCarr.Text = "0.0"
+
+        pbLedCarr.Image = My.Resources.LedVM
+        pbSilo.Image = My.Resources.SiloOff
+        pbLedLiberado.Image = My.Resources.LedVM
+        pbTruck.Image = My.Resources.CaminhaoOff
     End Sub
-
-
 End Class

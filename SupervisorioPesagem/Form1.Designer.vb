@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.pbTruck = New System.Windows.Forms.PictureBox()
         Me.pbSilo = New System.Windows.Forms.PictureBox()
         Me.pbLedTara = New System.Windows.Forms.PictureBox()
@@ -38,13 +39,13 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.gbControleis = New System.Windows.Forms.GroupBox()
+        Me.nudPesoDesejado = New System.Windows.Forms.NumericUpDown()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.tbPesoDesejado = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.pbLedLiberado = New System.Windows.Forms.PictureBox()
         Me.SerialCOM4 = New System.IO.Ports.SerialPort(Me.components)
@@ -55,13 +56,13 @@ Partial Class Form1
         Me.Label13 = New System.Windows.Forms.Label()
         Me.gbEstatisticas = New System.Windows.Forms.GroupBox()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TbMeanWeight = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.tbTotalWeight = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.tbTaraMean = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.tbTruckAmount = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -71,6 +72,7 @@ Partial Class Form1
         CType(Me.pbLedTara, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbLedCarr, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbControleis.SuspendLayout()
+        CType(Me.nudPesoDesejado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbLedLiberado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbEstatisticas.SuspendLayout()
         Me.SuspendLayout()
@@ -144,6 +146,7 @@ Partial Class Form1
         Me.tbTara.ReadOnly = True
         Me.tbTara.Size = New System.Drawing.Size(123, 20)
         Me.tbTara.TabIndex = 7
+        Me.tbTara.Text = "0.0"
         Me.tbTara.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'tbPesoCarr
@@ -154,6 +157,7 @@ Partial Class Form1
         Me.tbPesoCarr.ReadOnly = True
         Me.tbPesoCarr.Size = New System.Drawing.Size(135, 20)
         Me.tbPesoCarr.TabIndex = 8
+        Me.tbPesoCarr.Text = "0.0"
         Me.tbPesoCarr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'tbPesoReal
@@ -164,6 +168,7 @@ Partial Class Form1
         Me.tbPesoReal.ReadOnly = True
         Me.tbPesoReal.Size = New System.Drawing.Size(135, 20)
         Me.tbPesoReal.TabIndex = 9
+        Me.tbPesoReal.Text = "0.0"
         Me.tbPesoReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label1
@@ -218,13 +223,13 @@ Partial Class Form1
         '
         'gbControleis
         '
+        Me.gbControleis.Controls.Add(Me.nudPesoDesejado)
         Me.gbControleis.Controls.Add(Me.Label12)
         Me.gbControleis.Controls.Add(Me.Label11)
         Me.gbControleis.Controls.Add(Me.Label9)
         Me.gbControleis.Controls.Add(Me.Label8)
         Me.gbControleis.Controls.Add(Me.btnReset)
         Me.gbControleis.Controls.Add(Me.Label7)
-        Me.gbControleis.Controls.Add(Me.tbPesoDesejado)
         Me.gbControleis.Controls.Add(Me.btnTara)
         Me.gbControleis.Controls.Add(Me.Label5)
         Me.gbControleis.Controls.Add(Me.btnCarr)
@@ -239,6 +244,18 @@ Partial Class Form1
         Me.gbControleis.TabIndex = 15
         Me.gbControleis.TabStop = False
         Me.gbControleis.Text = "Painel de controle"
+        '
+        'nudPesoDesejado
+        '
+        Me.nudPesoDesejado.DecimalPlaces = 1
+        Me.nudPesoDesejado.Increment = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.nudPesoDesejado.Location = New System.Drawing.Point(258, 76)
+        Me.nudPesoDesejado.Maximum = New Decimal(New Integer() {25000, 0, 0, 0})
+        Me.nudPesoDesejado.Name = "nudPesoDesejado"
+        Me.nudPesoDesejado.ReadOnly = True
+        Me.nudPesoDesejado.Size = New System.Drawing.Size(120, 20)
+        Me.nudPesoDesejado.TabIndex = 22
+        Me.nudPesoDesejado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label12
         '
@@ -300,14 +317,6 @@ Partial Class Form1
         Me.Label7.TabIndex = 16
         Me.Label7.Text = "Peso Desejado"
         '
-        'tbPesoDesejado
-        '
-        Me.tbPesoDesejado.Location = New System.Drawing.Point(255, 72)
-        Me.tbPesoDesejado.Name = "tbPesoDesejado"
-        Me.tbPesoDesejado.Size = New System.Drawing.Size(123, 20)
-        Me.tbPesoDesejado.TabIndex = 15
-        Me.tbPesoDesejado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -349,7 +358,7 @@ Partial Class Form1
         '
         'MainTimer
         '
-        Me.MainTimer.Interval = 300
+        Me.MainTimer.Enabled = True
         '
         'TramaBox
         '
@@ -375,13 +384,13 @@ Partial Class Form1
         'gbEstatisticas
         '
         Me.gbEstatisticas.Controls.Add(Me.Label21)
-        Me.gbEstatisticas.Controls.Add(Me.TextBox4)
+        Me.gbEstatisticas.Controls.Add(Me.TbMeanWeight)
         Me.gbEstatisticas.Controls.Add(Me.Label20)
-        Me.gbEstatisticas.Controls.Add(Me.TextBox3)
+        Me.gbEstatisticas.Controls.Add(Me.tbTotalWeight)
         Me.gbEstatisticas.Controls.Add(Me.Label19)
-        Me.gbEstatisticas.Controls.Add(Me.TextBox2)
+        Me.gbEstatisticas.Controls.Add(Me.tbTaraMean)
         Me.gbEstatisticas.Controls.Add(Me.Label18)
-        Me.gbEstatisticas.Controls.Add(Me.TextBox1)
+        Me.gbEstatisticas.Controls.Add(Me.tbTruckAmount)
         Me.gbEstatisticas.Controls.Add(Me.Label17)
         Me.gbEstatisticas.Controls.Add(Me.Label16)
         Me.gbEstatisticas.Controls.Add(Me.Label15)
@@ -403,13 +412,15 @@ Partial Class Form1
         Me.Label21.TabIndex = 26
         Me.Label21.Text = "Kg"
         '
-        'TextBox4
+        'TbMeanWeight
         '
-        Me.TextBox4.Location = New System.Drawing.Point(43, 240)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(101, 20)
-        Me.TextBox4.TabIndex = 25
-        Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TbMeanWeight.Location = New System.Drawing.Point(43, 240)
+        Me.TbMeanWeight.Name = "TbMeanWeight"
+        Me.TbMeanWeight.ReadOnly = True
+        Me.TbMeanWeight.Size = New System.Drawing.Size(101, 20)
+        Me.TbMeanWeight.TabIndex = 25
+        Me.TbMeanWeight.Text = "0.0"
+        Me.TbMeanWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label20
         '
@@ -421,13 +432,15 @@ Partial Class Form1
         Me.Label20.TabIndex = 24
         Me.Label20.Text = "Kg"
         '
-        'TextBox3
+        'tbTotalWeight
         '
-        Me.TextBox3.Location = New System.Drawing.Point(43, 173)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(101, 20)
-        Me.TextBox3.TabIndex = 23
-        Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.tbTotalWeight.Location = New System.Drawing.Point(43, 173)
+        Me.tbTotalWeight.Name = "tbTotalWeight"
+        Me.tbTotalWeight.ReadOnly = True
+        Me.tbTotalWeight.Size = New System.Drawing.Size(101, 20)
+        Me.tbTotalWeight.TabIndex = 23
+        Me.tbTotalWeight.Text = "0.0"
+        Me.tbTotalWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label19
         '
@@ -439,13 +452,15 @@ Partial Class Form1
         Me.Label19.TabIndex = 22
         Me.Label19.Text = "Kg"
         '
-        'TextBox2
+        'tbTaraMean
         '
-        Me.TextBox2.Location = New System.Drawing.Point(43, 112)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(101, 20)
-        Me.TextBox2.TabIndex = 21
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.tbTaraMean.Location = New System.Drawing.Point(43, 112)
+        Me.tbTaraMean.Name = "tbTaraMean"
+        Me.tbTaraMean.ReadOnly = True
+        Me.tbTaraMean.Size = New System.Drawing.Size(101, 20)
+        Me.tbTaraMean.TabIndex = 21
+        Me.tbTaraMean.Text = "0.0"
+        Me.tbTaraMean.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label18
         '
@@ -457,13 +472,15 @@ Partial Class Form1
         Me.Label18.TabIndex = 20
         Me.Label18.Text = "Un"
         '
-        'TextBox1
+        'tbTruckAmount
         '
-        Me.TextBox1.Location = New System.Drawing.Point(43, 49)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(101, 20)
-        Me.TextBox1.TabIndex = 19
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.tbTruckAmount.Location = New System.Drawing.Point(43, 49)
+        Me.tbTruckAmount.Name = "tbTruckAmount"
+        Me.tbTruckAmount.ReadOnly = True
+        Me.tbTruckAmount.Size = New System.Drawing.Size(101, 20)
+        Me.tbTruckAmount.TabIndex = 19
+        Me.tbTruckAmount.Text = "0"
+        Me.tbTruckAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label17
         '
@@ -523,6 +540,7 @@ Partial Class Form1
         Me.Controls.Add(Me.pbLedTara)
         Me.Controls.Add(Me.pbSilo)
         Me.Controls.Add(Me.pbTruck)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.pbTruck, System.ComponentModel.ISupportInitialize).EndInit()
@@ -531,6 +549,7 @@ Partial Class Form1
         CType(Me.pbLedCarr, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbControleis.ResumeLayout(False)
         Me.gbControleis.PerformLayout()
+        CType(Me.nudPesoDesejado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbLedLiberado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbEstatisticas.ResumeLayout(False)
         Me.gbEstatisticas.PerformLayout()
@@ -555,7 +574,6 @@ Partial Class Form1
     Friend WithEvents Label5 As Label
     Friend WithEvents gbControleis As GroupBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents tbPesoDesejado As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents pbLedLiberado As PictureBox
     Friend WithEvents btnReset As Button
@@ -575,11 +593,12 @@ Partial Class Form1
     Friend WithEvents Label15 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label21 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TbMeanWeight As TextBox
     Friend WithEvents Label20 As Label
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents tbTotalWeight As TextBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents tbTaraMean As TextBox
     Friend WithEvents Label18 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents tbTruckAmount As TextBox
+    Friend WithEvents nudPesoDesejado As NumericUpDown
 End Class
